@@ -1,0 +1,49 @@
+// Removed line 1
+----------------------------------------------------------------------------------
+main.c: In function 'main':
+main.c:6:5: warning: implicit declaration of function 'printf' [-Wimplicit-funct
+ion-declaration]
+     printf("hello, world\n");
+     ^~~~~~
+main.c:6:5: warning: incompatible implicit declaration of built-in function 'pri
+ntf'
+main.c:6:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+----------------------------------------------------------------------------------
+
+When we removed the '#include <stdio.h>' line, the compiler could not find the declaration for 'printf()', and hence
+it raised the "implicit declaration of function" warning. It also mentions that there is an "incompatible implicit
+declaration of built-in function 'printf'," which means that the compiler assumed 'printf()' to have a different
+return type and arguments than the actual 'printf()' function defined in the standard library.
+
+// Removed line 3
+----------------------------------------------------------------------------------
+main.c:5:1: error: expected identifier or '(' before '{' token
+ {
+ ^
+----------------------------------------------------------------------------------
+
+The error we encountered, occurs because the compiler is expecting a function declaration before encountering the
+opening brace '{' in your code. In C, the 'main()' function serves as the entry point of the program, and it's where
+the execution starts. If you remove the 'main()' function entirely, there is no valid entry point for the program,
+which leads to the error you observed.
+
+// Removed line 5 and 7
+----------------------------------------------------------------------------------
+Code executes without errors.
+----------------------------------------------------------------------------------
+
+The main function is defined using the old-style syntax, which lacks the explicit return type of the function. In
+modern C programming, it is recommended to use 'int main()' instead of 'main()'. When you remove the two curly brackets
+'{}' around the 'printf' statement, the code still works because the comment // at the end of the printf line effectively
+"hides" the curly brackets from the compiler. Since the main function is the default entry point of a C program, the
+'printf' statement within it will still be executed when you run the program. The comment in front of the printf line
+doesn't affect the program's behavior, as it is simply ignored by the compiler.
+
+// Removed line 6
+----------------------------------------------------------------------------------
+Code executes without errors.
+----------------------------------------------------------------------------------
+
+When we execute a C program, the 'main()' function serves as the entry point of the program. In this case, since the
+'printf' statement is commented out, there are no executable statements inside the 'main()' function. As a result, the
+program will run successfully and then terminate without producing any visible output.
